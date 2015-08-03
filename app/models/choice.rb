@@ -1,7 +1,7 @@
-class Choice < ActiveRecord:Base
+class Choice < ActiveRecord::Base
   #has_many :categories, through: choice_categories
-  has_one :answer
+  has_many :answers, through: :choice_answers
 
-  validates :name, presence: true
-  validates :answer_ids, presence: true
+  # validates :name, presence: true
+  # validates :answer_ids, presence: true
 end

@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby "2.2.2"
 
+gem 'pry'
 
 gem 'foundation-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
