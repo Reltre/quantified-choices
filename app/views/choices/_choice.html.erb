@@ -1,0 +1,24 @@
+<div id="current_choice">
+  <div class="row text-center">
+    <div class="large-8 medium-centered columns panel radius">
+      <div class="float-left"><b>Choice</b></div>  <%= @choice.name %>
+    </div>
+    <div class="panel radius">
+      <ul class="tabs vertical" data-tab>
+        <li class="tab-title"><a href="#panel11">Most Used Answer</a></li>
+        <li class="tab-title"><a href="#panel11">Least Used Answer</a></li>
+      </ul>
+      <div class="tabs-content">
+        <div class="content active" id="panel11">
+          You chose <%= most_numerous_answer.description %> <%= format_percentage(@choice.largest_percentage) %>% of the time.
+        </div>
+        <br>
+        <br>
+        <div class="content active" id="panel21">
+          You chose <%= least_numerous_answer.description %> <%= format_percentage(@choice.smallest_percentage) %>% of the time.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>

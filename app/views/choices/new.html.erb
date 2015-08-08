@@ -1,7 +1,12 @@
 <%= form_for @choice do |f| %>
   <div class='row'>
     <%= f.label :Your_Choice %>
-    <%= f.text_area :name, rows: 5 %>
+    <%= f.text_field :name, rows: 5 %>
+
+    <%= fields_for :answer do |f| %>
+      <%= f.label :Your_Answer %>
+      <%= f.text_field :description, rows: 5 %>
+    <% end %>
   </div>
   <%= f.submit "Make a choice", class: 'button success small-offset-1' %>
 <% end %>

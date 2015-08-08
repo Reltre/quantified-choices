@@ -1,0 +1,8 @@
+<%= form_for @answer do |f| %>
+  <div class='row'>
+    <%= f.label :Your_Answer %>
+    <%= f.text_field :description, rows: 5 %>
+  </div>
+
+  <%= f.submit "Add another option?", class: 'button success small-offset-1' %>
+<% end %>

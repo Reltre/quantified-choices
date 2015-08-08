@@ -1,0 +1,9 @@
+<br>
+
+<%= render 'choice' %>
+
+<% if multiple_choices? %>
+  <%= link_to "Next Choice", choices_next_path, method: 'post', remote: true, class: 'button info right' %>
+
+  <%= link_to "Previous Choice", choices_previous_path, method: 'post', remote: true, class: 'button info left' %>
+<% end %>

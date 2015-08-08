@@ -1,28 +1,22 @@
 <nav class="top-bar" data-topbar role="navigation">
-  <ul class="title-area">
-    <li class="name">
-      <h1><a href="#">Quantified Choices</a></h1>
-    </li>
-     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-  </ul>
-
   <section class="top-bar-section">
     <!-- Right Nav Section -->
-    <ul class="right">
-      <li class="active"><%=link_to("Make a Choice", new_choice_path) %></li>
-      <li class="has-dropdown">
-        <a href="#">Right Button Dropdown</a>
-        <ul class="dropdown">
-          <li><a href="#">First link in dropdown</a></li>
-          <li class="active"><a href="#">Active link in dropdown</a></li>
-        </ul>
+    <ul class="title-area left">
+      <li class="name"></li>
+      <li>
+        <a href="<%= root_path %>">Quantified Choices</a>
       </li>
     </ul>
 
-    <!-- Left Nav Section -->
-    <ul class="left">
-      <li><a href="#">Left Nav Button</a></li>
+    <div id="add_answer" class="small-button success">
+      <ul>
+        <li><%= link_to("Add an Answer", new_answer_path) %></li>
+      </ul>
+    </div>
+
+
+    <ul class="right">
+      <li class="active"><%=link_to("Make a Choice", new_choice_path) %></li>
     </ul>
   </section>
 </nav>

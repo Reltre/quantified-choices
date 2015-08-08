@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150802202057) do
+ActiveRecord::Schema.define(version: 20150808055402) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "times"
   end
 
   create_table "choice_answers", force: :cascade do |t|
@@ -28,11 +29,10 @@ ActiveRecord::Schema.define(version: 20150802202057) do
 
   create_table "choices", force: :cascade do |t|
     t.string   "name"
-    t.integer  "answer_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "next_id"
+    t.integer  "previous_id"
   end
-
-  add_index "choices", ["answer_id"], name: "index_choices_on_answer_id"
 
 end
