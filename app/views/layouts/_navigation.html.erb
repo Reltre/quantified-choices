@@ -10,7 +10,9 @@
 
     <div id="add_answer" class="small-button success">
       <ul>
-        <li><%= link_to("Add an Answer", new_answer_path) %></li>
+        <li data-tooltip title="Use this button to add an option to the current choice">
+          <%= link_to("Add an Answer", new_answer_path) %>
+        </li>
       </ul>
     </div>
 
