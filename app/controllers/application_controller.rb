@@ -5,10 +5,16 @@ class ApplicationController < ActionController::Base
   helper_method :current_choice
 
   def current_choice
-    @current_choice = Choice.find(session[:choice_id]) if session[:choice_id]
+    if session[:choice_id]
+      @choice ||= current_user.choices.where(id: session[:choice_id])[0]
+    end
   end
 
   def empty_page?
     !current_choice
+  end
+
+  def current_user
+    @current_user ||= User.find(session[:user_id])
   end
 end

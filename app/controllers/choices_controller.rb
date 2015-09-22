@@ -2,8 +2,11 @@ class ChoicesController < ApplicationController
   helper_method :most_numerous_answer, :least_numerous_answer, :multiple_choices?
 
   def index
-    session[:choice_id] = Choice.all.last.id if session[:choice_id].nil?
-    @choice = current_choice
+    unless current_user.choices.blank?
+      binding.pry
+      session[:choice_id] = current_user.choices.last.id if session[:choice_id].nil?
+      current_choice
+    end
   end
 
   def new
@@ -13,7 +16,7 @@ class ChoicesController < ApplicationController
   def create
     choice_name = params[:choice][:name]
     session[:answer_id] = params[:answer][:description]
-    choice = Choice.new(name: choice_name)
+    choice = Choice.new(name: choice_name, user: current_user)
     unless Choice.all.empty?
       add_previous(choice)
     end
@@ -22,7 +25,7 @@ class ChoicesController < ApplicationController
     choice.answers << answer
     if choice.save
       session[:choice_id] = choice.id
-      redirect_to :root
+      redirect_to choices_path
     else
       render :new
     end
@@ -31,7 +34,7 @@ class ChoicesController < ApplicationController
   def next
     session[:choice_id] = current_choice.next_id if current_choice.next_id
     respond_to do |format|
-      format.html { redirect_to :root }
+      format.html { redirect_to :choices_path }
       format.js
     end
   end
@@ -39,7 +42,7 @@ class ChoicesController < ApplicationController
   def previous
     session[:choice_id] = current_choice.previous_id if current_choice.previous_id
     respond_to do |format|
-      format.html { redirect_to :root }
+      format.html { redirect_to :choices_path }
       format.js
     end
   end
@@ -77,6 +80,6 @@ class ChoicesController < ApplicationController
   end
 
   def multiple_choices?
-   Choice.all.size > 1
+   current_user.choices.size > 1
   end
 end
