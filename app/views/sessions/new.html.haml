@@ -1,0 +1,12 @@
+%h4 Quantified Choice
+
+%h5 Log in
+
+= form_tag login_path do
+  .row
+    = label_tag "username"
+    = text_field_tag :username
+  .row
+    = label_tag "password"
+    = text_field_tag :password
+  = submit_tag "Submit", class: 'button info small-offset-1'

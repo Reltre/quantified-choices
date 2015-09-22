@@ -1,0 +1,12 @@
+%h4 Quantified Choice
+
+%h5 Register
+
+= form_for @user do |f|
+  .row
+    = f.label "username"
+    = f.text_field :username
+  .row
+    = f.label "password"
+    = f.text_field :password
+  = f.submit "Submit", class: 'button info small-offset-1'
