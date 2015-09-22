@@ -2,6 +2,7 @@ class Choice < ActiveRecord::Base
   #has_many :categories, through: choice_categories
   has_many :choice_answers, dependent: :destroy
   has_many :answers, through: :choice_answers
+  belongs_to :user
 
   # validates :name, presence: true
   # validates :answer_ids, presence: true
